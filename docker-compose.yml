@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  splunkenterprise:
+    hostname: splunk_enterprise
+    image: splunk/splunk:8.0.1
+    environment:
+      - 'SPLUNK_ROLE=splunk_standalone'
+      - 'SPLUNK_START_ARGS=--accept-license --answer-yes'
+      - 'SPLUNK_PASSWORD='
+    volumes:
+      - ./etc:/opt/splunk/etc
+      - ./var:/opt/splunk/var
+    ports:
+      - "443:8000"
+
+volumes:
+    etc:
+    var:
